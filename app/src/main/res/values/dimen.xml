@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name = "yearMonth_width">150dp</dimen>
+    <dimen name = "yearMonth_textSize">26dp</dimen>
+    <dimen name = "yearMonth_topMargin">7dp</dimen>
+    <dimen name = "weekdays_height">40</dimen>
+
+</resources>
