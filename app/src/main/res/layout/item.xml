@@ -7,6 +7,7 @@
         android:background="#00aaff"
         android:orientation="vertical"
 
+
         android:layout_gravity="bottom">
 
         <LinearLayout
@@ -14,12 +15,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
+            android:background="#FFFFFF"
             >
 
             <Button
                 android:id="@+id/previous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="@string/previous" />
 
             <TextView
@@ -39,92 +42,92 @@
         </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/weekdays_height"
+        android:background="#4CAF50"
+        android:columnCount="7"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:rowCount="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/weekdays_height"
-            android:gravity="center_horizontal"
-            android:columnCount="7"
-            android:orientation="horizontal"
-            android:rowCount="1">
-            <TextView
-                android:id="@+id/Sun"
-                android:layout_column="0"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:hint="@string/Sun"
-                android:textSize="@dimen/weekDays_textSize"
-                />
-            <TextView
-                android:id="@+id/Mon"
-                android:layout_column="1"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
+        <TextView
+            android:id="@+id/Sun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/Sun"
+            android:textSize="@dimen/weekDays_textSize" />
 
-                android:gravity="center_horizontal"
+        <TextView
+            android:id="@+id/Mon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_weight="1"
 
-                android:hint="@string/Mon"
-                android:textSize="@dimen/weekDays_textSize"
-                />
-            <TextView
-                android:id="@+id/Tue"
-                android:layout_column="2"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
+            android:gravity="center"
 
-                android:gravity="center_horizontal"
+            android:hint="@string/Mon"
+            android:textSize="@dimen/weekDays_textSize" />
 
-                android:hint="@string/Tue"
-                android:textSize="@dimen/weekDays_textSize"
-                />
-            <TextView
-                android:id="@+id/Wed"
-                android:layout_column="3"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
+        <TextView
+            android:id="@+id/Tue"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="2"
+            android:layout_weight="1"
 
-                android:hint="@string/Wed"
-                android:textSize="@dimen/weekDays_textSize"
-                />
-            <TextView
-                android:id="@+id/Thu"
-                android:layout_column="4"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
+            android:gravity="center"
 
-                android:hint="@string/Thu"
-                android:textSize="@dimen/weekDays_textSize"
-                />
-            <TextView
-                android:id="@+id/Fri"
-                android:layout_column="5"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:hint="@string/Fri"
-                android:textSize="@dimen/weekDays_textSize"
-                />
-            <TextView
-                android:id="@+id/Sat"
-                android:layout_column="6"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
+            android:hint="@string/Tue"
+            android:textSize="@dimen/weekDays_textSize" />
 
-                android:hint="@string/Sat"
-                android:textSize="@dimen/weekDays_textSize"
-                />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/Wed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="3"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:hint="@string/Wed"
+            android:textSize="@dimen/weekDays_textSize" />
+
+        <TextView
+            android:id="@+id/Thu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="4"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:hint="@string/Thu"
+            android:textSize="@dimen/weekDays_textSize" />
+
+        <TextView
+            android:id="@+id/Fri"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="5"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/Fri"
+            android:textSize="@dimen/weekDays_textSize" />
+
+        <TextView
+            android:id="@+id/Sat"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="6"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:hint="@string/Sat"
+            android:textSize="@dimen/weekDays_textSize" />
+    </LinearLayout>
 
 
 

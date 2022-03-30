@@ -3,7 +3,7 @@
     <dimen name = "yearMonth_width">150dp</dimen>
     <dimen name = "yearMonth_textSize">26sp</dimen>
     <dimen name = "yearMonth_topMargin">5dp</dimen>
-    <dimen name = "weekdays_height">40</dimen>
-    <dimen name = "weekDays_textSize">20sp</dimen>
+    <dimen name = "weekdays_height">20</dimen>
+    <dimen name = "weekDays_textSize">15sp</dimen>
 
 </resources>
