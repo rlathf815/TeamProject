@@ -123,12 +123,13 @@
         android:hint="@string/Sat"
         android:textSize="@dimen/weekDays_textSize" />
     </LinearLayout>
+
     <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="7"
-        android:verticalSpacing="70dp"
+
 
         />
 
