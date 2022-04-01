@@ -10,23 +10,25 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MyGridViewAdapter extends BaseAdapter {
-    ArrayList<item> items = new ArrayList<item>();
-    Context context;
+    private ArrayList<item> mItems = new ArrayList<item>();
+    private Context mContext;
+    private int mResource;
 
-
-    public void addItem(item item)
+    public MyGridViewAdapter(Context context, int resource,ArrayList<item> items)
     {
-        items.add(item);
+        mContext = context;
+        mItems = items;
+        mResource = resource;
     }
 
     @Override
     public int getCount() {
-        return items.size();
+        return mItems.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return items.get(i);
+        return mItems.get(i);
     }
 
     @Override
@@ -35,32 +37,25 @@ public class MyGridViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup parent) {
+    public View getView(int i, View convertView, ViewGroup parent) {
 
-        context = parent.getContext();
-        item item = items.get(i);
-
-        if(view == null)
+        if(convertView == null)
         {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.item_layout, parent, false);
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(mResource,parent,false);
 
         }
-        TextView tv_day = view.findViewById(R.id.textView_day);
-        tv_day.setText(item.day);
+        TextView tv_day = convertView.findViewById(R.id.textView_day);
+        tv_day.setText(mItems.get(i).day);
 
-        TextView tv_schedule1 = view.findViewById(R.id.textView_schedule1);
-        tv_schedule1.setText(item.schedule1);
+        TextView tv_schedule1 = convertView.findViewById(R.id.textView_schedule1);
+        tv_schedule1.setText(mItems.get(i).schedule1);
 
-        TextView tv_schedule2 = view.findViewById(R.id.textView_schedule2);
-        tv_schedule2.setText(item.schedule2);
+        TextView tv_schedule2 = convertView.findViewById(R.id.textView_schedule2);
+        tv_schedule2.setText(mItems.get(i).schedule2);
 
-        TextView tv_schedule3 = view.findViewById(R.id.textView_schedule3);
-        tv_schedule3.setText(item.schedule3);
-
-        TextView tv_schedule4 = view.findViewById(R.id.textView_schedule4);
-        tv_schedule4.setText(item.schedule4);
-
-        return view;
+        TextView tv_schedule3 = convertView.findViewById(R.id.textView_schedule3);
+        tv_schedule3.setText(mItems.get(i).schedule3);
+        return convertView;
     }
 }
