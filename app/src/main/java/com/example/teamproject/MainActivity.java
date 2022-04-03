@@ -9,19 +9,35 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
+
+    private ArrayList<String> day;
+    private TextView nowDate;
 
     String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        nowDate = (TextView)findViewById(R.id.YearMonth);
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat curYear = new SimpleDateFormat("yyyy", Locale.getDefault());
+        SimpleDateFormat curMonth = new SimpleDateFormat("MM", Locale.getDefault());
+        SimpleDateFormat curDay = new SimpleDateFormat("dd", Locale.getDefault());
+
+        nowDate.setText(curYear.format(now) + "년 " + curMonth.format(now) + "월");
 
         Button btn = findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
