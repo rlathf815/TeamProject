@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             @Override public void onClick(View view) {
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                Intent intent1 = intent.putExtra("2022년 3월");
 
                 startActivity(intent);
                 finish();
