@@ -2,21 +2,44 @@ package com.example.teamproject;        //재입력
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
+
+    String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btn = findViewById(R.id.next);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NextCalendar.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        Button btn2 = findViewById(R.id.previous);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PreviousCalendar.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // 데이터 원본 준비
         //String[] items = new String[42];

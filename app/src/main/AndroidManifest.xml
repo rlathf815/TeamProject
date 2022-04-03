@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
         <activity
+            android:name=".PreviousCalendar"
+            android:exported="false" />
+        <activity
+            android:name=".NextCalendar"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
