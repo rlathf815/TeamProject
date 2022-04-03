@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         gridView.setAdapter(adapter);
         //어댑터 준비 (배열 객체 이용, simple_list_item_1 리소스 사용
 
+
         mtmp = (TextView)findViewById(R.id.YearMonth);
         mtmp.setText("2022년 4월");
 
