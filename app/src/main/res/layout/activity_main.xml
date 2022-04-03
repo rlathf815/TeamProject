@@ -24,7 +24,8 @@
 
         <TextView
         android:id="@+id/YearMonth"
-        android:layout_width="@dimen/yearMonth_width"
+        android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_margin="@dimen/yearMonth_topMargin"

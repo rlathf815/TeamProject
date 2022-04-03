@@ -1,4 +1,4 @@
-package com.example.teamproject;        //재입력
+package com.example.teamproject;        //재전송
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,17 +20,15 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
-    TextView mtmp;
-
-    private ArrayList<String> day;
-    private TextView nowDate;
 
     String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent =getIntent();
 
+        TextView nowDate;
         nowDate = (TextView)findViewById(R.id.YearMonth);
         long now = System.currentTimeMillis();
         Date date = new Date(now);
@@ -39,44 +36,27 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat curMonth = new SimpleDateFormat("MM", Locale.getDefault());
         SimpleDateFormat curDay = new SimpleDateFormat("dd", Locale.getDefault());
 
-        nowDate.setText(curYear.format(now) + "년 " + curMonth.format(now) + "월");
+        //nowDate.setText(curYear.format(now) + "년 " + curMonth.format(now) + "월");
+        String year = curYear.format(now);
+        String month = curMonth.format(now);
+        String day = curDay.format(now);
 
-        Button btn = findViewById(R.id.next);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        String nmonth = intent.getExtras("month",month);
 
-        Button btn2 = findViewById(R.id.previous);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Integer.parseInt(curYear.format(now)), Integer.parseInt(curMonth.format(now))-1, 1);
+        int blank = cal.get(Calendar.DAY_OF_WEEK);
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        // 데이터 원본 준비
-        //String[] items = new String[42];
-        //for(int i=0;i<42;i++)
-        //{
-        //    items[i] = "1\n\n\n\n";
-        //}
-
-        //GridView gridview = findViewById(R.id.gridview);
-        //MyGridViewAdapter adapter= new MyGridViewAdapter();
         ArrayList<item> data = new ArrayList<item>();
-        for(int i=0;i<42;i++)
-         {
-            data.add(new item("1","","",""));
-         }
-        //gridview.setAdapter(adapter);
+        for (int i=1; i <blank; i++) {
+            data.add(new item(" ","","",""));
+        }
 
+        //for(int i=blank;i<42;i++)
+        //{
+        //   data.add(new item("1","","",""));
+        //}
+        //gridview.setAdapter(adapter);
 
         adapter = new MyGridViewAdapter(this, R.layout.item_layout, data);
 
@@ -85,8 +65,25 @@ public class MainActivity extends AppCompatActivity {
         //어댑터 준비 (배열 객체 이용, simple_list_item_1 리소스 사용
 
 
-        mtmp = (TextView)findViewById(R.id.YearMonth);
-        mtmp.setText("2022년 4월");
+
+        Button btn = findViewById(R.id.next);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NextCalendar.class);
+
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        Button btn2 = findViewById(R.id.previous);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PreviousCalendar.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View vClicked,
