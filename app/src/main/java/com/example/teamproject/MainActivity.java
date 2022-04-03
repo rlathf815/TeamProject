@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent =getIntent();
 
         TextView nowDate;
         nowDate = (TextView)findViewById(R.id.YearMonth);
@@ -36,19 +35,21 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat curMonth = new SimpleDateFormat("MM", Locale.getDefault());
         SimpleDateFormat curDay = new SimpleDateFormat("dd", Locale.getDefault());
 
-        //nowDate.setText(curYear.format(now) + "년 " + curMonth.format(now) + "월");
-        String year = curYear.format(now);
-        String month = curMonth.format(now);
-        String day = curDay.format(now);
-
-        String nmonth = intent.getExtras("month",month);
+        nowDate.setText(curYear.format(now) + "년 " + curMonth.format(now) + "월");
 
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.parseInt(curYear.format(now)), Integer.parseInt(curMonth.format(now))-1, 1);
         int blank = cal.get(Calendar.DAY_OF_WEEK);
+        int lastblank = 42 - (blank+cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 
         ArrayList<item> data = new ArrayList<item>();
-        for (int i=1; i <blank; i++) {
+        for (int i=0; i <blank-1; i++) {
+            data.add(new item(" ","","",""));
+        }
+        for (int i=0; i < cal.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
+            data.add(new item(""+(i+1),"","",""));
+        }
+        for (int i=0; i<lastblank+1; i++) {
             data.add(new item(" ","","",""));
         }
 
@@ -70,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), NextCalendar.class);
-
                 startActivity(intent);
                 finish();
             }
