@@ -21,15 +21,13 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
 
-    private ArrayList<String> day;
-    private TextView nowDate;
-
     String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView nowDate;
         nowDate = (TextView)findViewById(R.id.YearMonth);
         long now = System.currentTimeMillis();
         Date date = new Date(now);
@@ -59,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(adapter);
         //어댑터 준비 (배열 객체 이용, simple_list_item_1 리소스 사용
+
 
 
         Button btn = findViewById(R.id.next);
