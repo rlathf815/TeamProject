@@ -12,12 +12,13 @@ public class NextCalendar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_next_calendar);
+        setContentView(R.layout.activity_main);
 
         Button btn = findViewById(R.id.previous);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
                 startActivity(intent);
                 finish();
             }

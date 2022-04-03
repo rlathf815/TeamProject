@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
+    TextView mtmp;
 
     String date;
     @Override
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NextCalendar.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -35,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         Button btn2 = findViewById(R.id.previous);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PreviousCalendar.class);
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent1 = intent.putExtra("2022년 3월");
+
                 startActivity(intent);
                 finish();
             }
@@ -63,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(adapter);
         //어댑터 준비 (배열 객체 이용, simple_list_item_1 리소스 사용
+
+        mtmp = (TextView)findViewById(R.id.YearMonth);
+        mtmp.setText("2022년 4월");
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View vClicked,

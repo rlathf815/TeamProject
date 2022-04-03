@@ -12,7 +12,7 @@ public class PreviousCalendar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_previous_calendar);
+        setContentView(R.layout.activity_main);
 
         Button btn = findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
