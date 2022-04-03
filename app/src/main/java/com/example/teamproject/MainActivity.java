@@ -18,11 +18,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
     int[] info = new int[4];
-    int[] current = new int[3];
-    boolean flag;
+    public static int[] current = new int[3];
 
     MonthViewActivity mva = new MonthViewActivity();
     String date;
@@ -32,20 +32,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(flag==false)
+        Intent myIntent = getIntent();
+        int weightVal = myIntent.getIntExtra("month", 0);
+
+        if(weightVal == 0)
             current = mva.calcCal();
+
+        current[1] = current[1] + weightVal;
+        System.out.println("current 값은 :"+current[1]+ "  weight값은: " + weightVal);
+        //System.out.println("count 값은 "+flag);
+
+        info = mva.calcInfo(current);
 
         TextView nowDate;
         nowDate = (TextView)findViewById(R.id.YearMonth);
-
-        Intent myIntent = getIntent();
-        int weightVal = myIntent.getIntExtra("month", 0);
-        current[1] += weightVal;
-        System.out.println("current 값은 :"+current[1]+ "  weight값은: " + weightVal);
-        System.out.println("flag 값은 "+flag);
-
-
-        info = mva.calcInfo(current);
 
 
         ArrayList<item> data = new ArrayList<item>();
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                flag = true;
+                //flag = true;
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("month",1);
                 System.out.println("current값은"+current[1]);
@@ -81,11 +81,10 @@ public class MainActivity extends AppCompatActivity {
         Button btn2 = findViewById(R.id.previous);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                flag = true;
+                //flag = true;
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("month",-1);
                 System.out.println("current값은"+current[1]);
-
                 startActivity(intent);
                 finish();
             }
