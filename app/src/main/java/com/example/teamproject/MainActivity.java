@@ -38,7 +38,20 @@ public class MainActivity extends AppCompatActivity {
         if(weightVal == 0)
             current = mva.calcCal();
 
-        current[1] = current[1] + weightVal;
+        if(current[1]==1 && weightVal==-1)
+        {
+            current[0] = current[0]+weightVal;
+            current[1]=12;
+        }
+        else if(current[1]==12 && weightVal==1)
+        {
+            current[0] = current[0]+weightVal;
+            current[1]=1;
+        }
+        else
+        {
+            current[1] = current[1] + weightVal;
+        }
         System.out.println("current 값은 :"+current[1]+ "  weight값은: " + weightVal);
         //System.out.println("count 값은 "+flag);
 
@@ -94,7 +107,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View vClicked, int position, long id)
             {
                 String day = ((item) adapter.getItem(position)).day;
-                Toast.makeText(MainActivity.this, day + " selected",
+                String year = String.valueOf(current[0]);
+                String month = String.valueOf(current[1]);
+                Toast.makeText(MainActivity.this, year + "." + month + "." + day,
                         Toast.LENGTH_SHORT).show();
             }
         });
