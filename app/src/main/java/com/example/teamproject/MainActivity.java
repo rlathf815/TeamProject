@@ -1,4 +1,4 @@
-package com.example.teamproject;        //재입력
+package com.example.teamproject;        
 
 import androidx.appcompat.app.AppCompatActivity;
 
