@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_margin="@dimen/yearMonth_topMargin"
-        android:hint="@string/YearMonth"
         android:textSize="@dimen/yearMonth_textSize" />
 
         <Button
