@@ -40,9 +40,16 @@ public class MainActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.parseInt(curYear.format(now)), Integer.parseInt(curMonth.format(now))-1, 1);
         int blank = cal.get(Calendar.DAY_OF_WEEK);
+        int lastblank = 42 - (blank+cal.getActualMaximum(Calendar.DAY_OF_MONTH));
 
         ArrayList<item> data = new ArrayList<item>();
-        for (int i=1; i <blank; i++) {
+        for (int i=0; i <blank-1; i++) {
+            data.add(new item(" ","","",""));
+        }
+        for (int i=0; i < cal.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
+            data.add(new item(""+(i+1),"","",""));
+        }
+        for (int i=0; i<lastblank+1; i++) {
             data.add(new item(" ","","",""));
         }
 
