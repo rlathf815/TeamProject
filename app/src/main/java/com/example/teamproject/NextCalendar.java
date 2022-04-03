@@ -18,7 +18,6 @@ public class NextCalendar extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-
                 startActivity(intent);
                 finish();
             }
