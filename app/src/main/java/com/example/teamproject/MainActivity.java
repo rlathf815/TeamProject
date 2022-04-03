@@ -20,57 +20,59 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
+    int[] info = new int[4];
+    int[] current = new int[3];
+    boolean flag;
 
+    MonthViewActivity mva = new MonthViewActivity();
     String date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(flag==false)
+            current = mva.calcCal();
+
         TextView nowDate;
         nowDate = (TextView)findViewById(R.id.YearMonth);
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
-        SimpleDateFormat curYear = new SimpleDateFormat("yyyy", Locale.getDefault());
-        SimpleDateFormat curMonth = new SimpleDateFormat("MM", Locale.getDefault());
-        SimpleDateFormat curDay = new SimpleDateFormat("dd", Locale.getDefault());
 
-        nowDate.setText(curYear.format(now) + "년 " + curMonth.format(now) + "월");
+        Intent myIntent = getIntent();
+        int weightVal = myIntent.getIntExtra("month", 0);
+        current[1] += weightVal;
+        System.out.println("current 값은 :"+current[1]+ "  weight값은: " + weightVal);
+        System.out.println("flag 값은 "+flag);
 
-        Calendar cal = Calendar.getInstance();
-        cal.set(Integer.parseInt(curYear.format(now)), Integer.parseInt(curMonth.format(now))-1, 1);
-        int blank = cal.get(Calendar.DAY_OF_WEEK);
-        int lastblank = 42 - (blank+cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+
+        info = mva.calcInfo(current);
+
 
         ArrayList<item> data = new ArrayList<item>();
-        for (int i=0; i <blank-1; i++) {
+        for (int i=0; i <info[0]-1; i++) {
             data.add(new item(" ","","",""));
         }
-        for (int i=0; i < cal.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
+        for (int i=0; i < info[1]; i++) {
             data.add(new item(""+(i+1),"","",""));
         }
-        for (int i=0; i<lastblank+1; i++) {
+        for (int i=0; i<(43-(info[0]+info[1])); i++) {
             data.add(new item(" ","","",""));
         }
-
-        //for(int i=blank;i<42;i++)
-        //{
-        //   data.add(new item("1","","",""));
-        //}
-        //gridview.setAdapter(adapter);
+        nowDate.setText(current[0] + "년 " + current[1] + "월");
 
         adapter = new MyGridViewAdapter(this, R.layout.item_layout, data);
 
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(adapter);
-        //어댑터 준비 (배열 객체 이용, simple_list_item_1 리소스 사용
-
 
 
         Button btn = findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NextCalendar.class);
+                flag = true;
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("month",1);
+                System.out.println("current값은"+current[1]);
                 startActivity(intent);
                 finish();
             }
@@ -79,16 +81,19 @@ public class MainActivity extends AppCompatActivity {
         Button btn2 = findViewById(R.id.previous);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PreviousCalendar.class);
+                flag = true;
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("month",-1);
+                System.out.println("current값은"+current[1]);
+
                 startActivity(intent);
                 finish();
             }
         });
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View vClicked,
-                                    int position, long id) {
-                //   String name = (String) ((TextView)vClicked.findViewById(R.id.textItem1)).getText();
+            public void onItemClick(AdapterView<?> parent, View vClicked, int position, long id)
+            {
                 String day = ((item) adapter.getItem(position)).day;
                 Toast.makeText(MainActivity.this, day + " selected",
                         Toast.LENGTH_SHORT).show();

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name = "yearMonth_width">150dp</dimen>
+    <dimen name = "yearMonth_width">200dp</dimen>
     <dimen name = "yearMonth_textSize">26sp</dimen>
     <dimen name = "yearMonth_topMargin">5dp</dimen>
-    <dimen name = "weekdays_height">30dp</dimen>
-    <dimen name = "weekDays_textSize">15sp</dimen>
+    <dimen name = "weekdays_height">18dp</dimen>
+    <dimen name = "weekDays_textSize">12sp</dimen>
     <dimen name = "schedule_textSize">11sp</dimen>
-    <dimen name = "day_textSize">19sp</dimen>
+    <dimen name = "day_textSize">13sp</dimen>
 
 </resources>

@@ -24,7 +24,7 @@
 
         <TextView
         android:id="@+id/YearMonth"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/yearMonth_width"
 
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -42,7 +42,7 @@
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/weekdays_height"
-    android:background="#4CAF50"
+    android:background="#8BC34A"
     android:columnCount="7"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
@@ -129,9 +129,9 @@
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="7"
-
-        />
+        android:background="#FFFFFF"
+        android:verticalSpacing="40dp"
+        android:numColumns="7" />
 
 
 </LinearLayout>
