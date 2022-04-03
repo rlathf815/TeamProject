@@ -39,6 +39,28 @@ public class MainActivity extends AppCompatActivity {
 
         nowDate.setText(curYear.format(now) + "년 " + curMonth.format(now) + "월");
 
+        Calendar cal = Calendar.getInstance();
+        cal.set(Integer.parseInt(curYear.format(now)), Integer.parseInt(curMonth.format(now))-1, 1);
+        int blank = cal.get(Calendar.DAY_OF_WEEK);
+
+        ArrayList<item> data = new ArrayList<item>();
+        for (int i=1; i <blank; i++) {
+            data.add(new item(" ","","",""));
+        }
+
+        //for(int i=blank;i<42;i++)
+        //{
+        //   data.add(new item("1","","",""));
+        //}
+        //gridview.setAdapter(adapter);
+
+        adapter = new MyGridViewAdapter(this, R.layout.item_layout, data);
+
+        GridView gridView = (GridView) findViewById(R.id.gridview);
+        gridView.setAdapter(adapter);
+        //어댑터 준비 (배열 객체 이용, simple_list_item_1 리소스 사용
+
+
         Button btn = findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
@@ -56,29 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        // 데이터 원본 준비
-        //String[] items = new String[42];
-        //for(int i=0;i<42;i++)
-        //{
-        //    items[i] = "1\n\n\n\n";
-        //}
-
-        //GridView gridview = findViewById(R.id.gridview);
-        //MyGridViewAdapter adapter= new MyGridViewAdapter();
-        ArrayList<item> data = new ArrayList<item>();
-        for(int i=0;i<42;i++)
-         {
-            data.add(new item("1","","",""));
-         }
-        //gridview.setAdapter(adapter);
-
-
-        adapter = new MyGridViewAdapter(this, R.layout.item_layout, data);
-
-        GridView gridView = (GridView) findViewById(R.id.gridview);
-        gridView.setAdapter(adapter);
-        //어댑터 준비 (배열 객체 이용, simple_list_item_1 리소스 사용
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View vClicked,
