@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
     int[] info = new int[4];
     public static int[] current = new int[3];
+
 
     MonthViewActivity mva = new MonthViewActivity();
     String date;
@@ -114,11 +116,16 @@ public class MainActivity extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View vClicked, int position, long id)
             {
+
                 String day = ((item) adapter.getItem(position)).day;
                 String year = String.valueOf(current[0]);
                 String month = String.valueOf(current[1]);
                 Toast.makeText(MainActivity.this, year + "." + month + "." + day,
                         Toast.LENGTH_SHORT).show();
+                View view = findViewById(R.id.gridview);
+                view.setBackgroundResource(R.drawable.none);
+                vClicked.setBackgroundResource(R.drawable.border);
+
             }
         });
 
