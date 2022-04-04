@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         gridView.setAdapter(adapter);
         System.out.println("--------------------------------------------------------------------month값은 "+current[1]);
 
+
         Button btn = findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
@@ -112,20 +113,24 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        //View view ;
+        ArrayList<View> view = new ArrayList<View>();
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View vClicked, int position, long id)
             {
-
+                if(!view.isEmpty()) {
+                    view.get(0).setBackgroundResource(R.drawable.none);
+                    view.clear();
+                }
                 String day = ((item) adapter.getItem(position)).day;
                 String year = String.valueOf(current[0]);
                 String month = String.valueOf(current[1]);
                 Toast.makeText(MainActivity.this, year + "." + month + "." + day,
                         Toast.LENGTH_SHORT).show();
-                View view = findViewById(R.id.gridview);
-                view.setBackgroundResource(R.drawable.none);
-                vClicked.setBackgroundResource(R.drawable.border);
 
+                vClicked.setBackgroundResource(R.drawable.border);
+                view.add(vClicked);
+                System.out.println("-------------------view 추가됨?"+ !view.isEmpty());
             }
         });
 
