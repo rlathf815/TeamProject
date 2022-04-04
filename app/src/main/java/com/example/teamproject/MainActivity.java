@@ -3,8 +3,11 @@ package com.example.teamproject;        //재전송
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,6 +23,7 @@ import java.util.Locale;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 
+
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
     int[] info = new int[4];
@@ -30,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setWindowAnimations(0);
 
         Intent myIntent = getIntent();
         int weightVal = myIntent.getIntExtra("month", 0);
