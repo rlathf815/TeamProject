@@ -4,22 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1"
-    android:background="#00aaff"
+    android:background="#0000AAFF"
     android:orientation="vertical">
 
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="#FFFFFF"
+    android:background="#FFFBFF"
     android:gravity="center_horizontal">
 
 
         <Button
-        android:id="@+id/previous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/previous" />
+            android:id="@+id/previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3A4D39"
+            android:text="@string/previous" />
 
 
         <TextView
@@ -33,30 +34,32 @@
         android:textSize="@dimen/yearMonth_textSize" />
 
         <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next" />
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3A4D39"
+            android:text="@string/next" />
     </LinearLayout>
 
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/weekdays_height"
-    android:background="#8BC34A"
+    android:background="#8B9C84"
     android:columnCount="7"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
     android:rowCount="1">
 
-    <TextView
-        android:id="@+id/Sun"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_column="0"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:hint="@string/Sun"
-        android:textSize="@dimen/weekDays_textSize" />
+        <TextView
+            android:id="@+id/Sun"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_column="0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/Sun"
+            android:textColorHint="#FFFBFF"
+            android:textSize="@dimen/weekDays_textSize" />
 
     <TextView
         android:id="@+id/Mon"
@@ -64,6 +67,7 @@
         android:layout_height="match_parent"
         android:layout_column="1"
         android:layout_weight="1"
+        android:textColorHint="#FFFBFF"
 
         android:gravity="center"
 
@@ -76,6 +80,7 @@
         android:layout_height="match_parent"
         android:layout_column="2"
         android:layout_weight="1"
+        android:textColorHint="#FFFBFF"
 
         android:gravity="center"
 
@@ -89,6 +94,7 @@
         android:layout_column="3"
         android:layout_weight="1"
         android:gravity="center"
+        android:textColorHint="#FFFBFF"
 
         android:hint="@string/Wed"
         android:textSize="@dimen/weekDays_textSize" />
@@ -100,6 +106,7 @@
         android:layout_column="4"
         android:layout_weight="1"
         android:gravity="center"
+        android:textColorHint="#FFFBFF"
 
         android:hint="@string/Thu"
         android:textSize="@dimen/weekDays_textSize" />
@@ -112,6 +119,8 @@
         android:layout_weight="1"
         android:gravity="center"
         android:hint="@string/Fri"
+        android:textColorHint="#FFFBFF"
+
         android:textSize="@dimen/weekDays_textSize" />
 
     <TextView
@@ -122,6 +131,8 @@
         android:layout_weight="1"
         android:gravity="center"
         android:hint="@string/Sat"
+        android:textColorHint="#FFFBFF"
+
         android:textSize="@dimen/weekDays_textSize" />
     </LinearLayout>
 
@@ -131,8 +142,8 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="false"
         android:animationCache="false"
-
-        android:background="#FFFFFF"
+        android:gravity="center"
+        android:background="#ECE4E5"
         android:numColumns="7"
         android:verticalSpacing="40dp" />
 

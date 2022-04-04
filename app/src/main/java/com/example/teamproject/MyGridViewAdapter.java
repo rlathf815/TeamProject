@@ -73,7 +73,9 @@ public class MyGridViewAdapter extends BaseAdapter {
 
         if (sToday.equals(mItems.get(i).day) && curMonth==mItems.get(i).month) { //오늘 day 텍스트 컬러 변경
 
-            tv_day.setBackgroundColor(Color.LTGRAY);
+            tv_day.setBackgroundColor(Color.rgb(222,182,174));
+            tv_day.setTextColor(Color.WHITE);
+
         }
         int j=0;
 
@@ -87,12 +89,13 @@ public class MyGridViewAdapter extends BaseAdapter {
         for(int k=8-j;k<= mItems.size();k+=7)
         {
             if(String.valueOf(k).equals(mItems.get(i).day))
-                tv_day.setTextColor(Color.RED);
+                tv_day.setTextColor(Color.rgb(198,77,107));
         }
         for(int k=7-j;k<= mItems.size();k+=7)
         {
             if(String.valueOf(k).equals(mItems.get(i).day))
-                tv_day.setTextColor(Color.BLUE);
+                tv_day.setTextColor(Color.rgb(32,109,171));
+
         }
 
         return convertView;
