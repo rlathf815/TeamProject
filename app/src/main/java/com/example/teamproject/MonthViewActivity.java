@@ -29,8 +29,6 @@ public class MonthViewActivity {
         yearMonth[2]= day;
         return yearMonth;
     }
-
-
     public int[] calcInfo(int[] yearMonth) {
 
         int[] info = new int[2]; //info[0]=blank, info[1]=max days
@@ -44,7 +42,5 @@ public class MonthViewActivity {
         info[1] = maxDays;
         return info;
     }
-
     MonthViewActivity(){}
-
 }

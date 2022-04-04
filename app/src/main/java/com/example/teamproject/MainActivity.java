@@ -32,14 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     MonthViewActivity mva = new MonthViewActivity();
-    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getWindow().setWindowAnimations(0);
+        getWindow().setWindowAnimations(0); //화면전환효과 삭제
 
         Intent myIntent = getIntent();
         int weightVal = myIntent.getIntExtra("month", 0);
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         System.out.println("current 값은 :"+current[1]+ "  weight값은: " + weightVal);
-        //System.out.println("count 값은 "+flag);
 
         info = mva.calcInfo(current);
 
@@ -133,6 +131,5 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("-------------------view 추가됨?"+ !view.isEmpty());
             }
         });
-
     }
 }

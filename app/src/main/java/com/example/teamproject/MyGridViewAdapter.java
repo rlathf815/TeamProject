@@ -67,9 +67,6 @@ public class MyGridViewAdapter extends BaseAdapter {
         //blank 세어서 8-blank개수 하면 첫번째 일요일 날짜 나옴
         //String sMonth = String.valueOf(curMonth);
         String sToday = String.valueOf(today);
-        System.out.println("---------------------------------------sMonth 값은 "+curMonth);
-        System.out.println("---------------------------------------month 값은 "+mItems.get(i).month);
-        //System.out.println("---------------------------------------동일한가? "+ curMonth==mItems.get(i).month);
 
         if (sToday.equals(mItems.get(i).day) && curMonth==mItems.get(i).month) { //오늘 day 텍스트 컬러 변경
 
@@ -95,9 +92,7 @@ public class MyGridViewAdapter extends BaseAdapter {
         {
             if(String.valueOf(k).equals(mItems.get(i).day))
                 tv_day.setTextColor(Color.rgb(32,109,171));
-
         }
-
         return convertView;
     }
 }
