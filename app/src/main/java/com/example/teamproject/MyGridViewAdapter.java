@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MyGridViewAdapter extends BaseAdapter {
     private ArrayList<item> mItems = new ArrayList<item>();
@@ -43,8 +45,8 @@ public class MyGridViewAdapter extends BaseAdapter {
         {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(mResource,parent,false);
-
         }
+
         TextView tv_day = convertView.findViewById(R.id.textView_day);
         tv_day.setText(mItems.get(i).day);
 
@@ -56,6 +58,43 @@ public class MyGridViewAdapter extends BaseAdapter {
 
         TextView tv_schedule3 = convertView.findViewById(R.id.textView_schedule3);
         tv_schedule3.setText(mItems.get(i).schedule3);
+
+        Calendar mCal = Calendar.getInstance();
+
+        int td = mCal.get(Calendar.DAY_OF_WEEK);
+        int today = mCal.get(Calendar.DAY_OF_MONTH);
+        int curMonth = mCal.get(Calendar.MONTH)+1;
+        //blank 세어서 8-blank개수 하면 첫번째 일요일 날짜 나옴
+        //String sMonth = String.valueOf(curMonth);
+        String sToday = String.valueOf(today);
+        System.out.println("---------------------------------------sMonth 값은 "+curMonth);
+        System.out.println("---------------------------------------month 값은 "+mItems.get(i).month);
+        //System.out.println("---------------------------------------동일한가? "+ curMonth==mItems.get(i).month);
+
+        if (sToday.equals(mItems.get(i).day) && curMonth==mItems.get(i).month) { //오늘 day 텍스트 컬러 변경
+
+            tv_day.setBackgroundColor(Color.LTGRAY);
+        }
+        int j=0;
+
+        while(true)
+        {
+            if(mItems.get(j).day!=" ")
+                break;
+            j++;
+        }
+
+        for(int k=8-j;k<= mItems.size();k+=7)
+        {
+            if(String.valueOf(k).equals(mItems.get(i).day))
+                tv_day.setTextColor(Color.RED);
+        }
+        for(int k=7-j;k<= mItems.size();k+=7)
+        {
+            if(String.valueOf(k).equals(mItems.get(i).day))
+                tv_day.setTextColor(Color.BLUE);
+        }
+
         return convertView;
     }
 }

@@ -131,7 +131,9 @@
         android:layout_height="match_parent"
         android:background="#FFFFFF"
         android:verticalSpacing="40dp"
-        android:numColumns="7" />
+        android:numColumns="7"
+
+        />
 
 
 </LinearLayout>

@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 
 public class MainActivity extends AppCompatActivity {
     static MyGridViewAdapter adapter;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         {
             current[1] = current[1] + weightVal;
         }
+
         System.out.println("current 값은 :"+current[1]+ "  weight값은: " + weightVal);
         //System.out.println("count 값은 "+flag);
 
@@ -63,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<item> data = new ArrayList<item>();
         for (int i=0; i <info[0]-1; i++) {
-            data.add(new item(" ","","",""));
+            data.add(new item(" ","","","",current[1]));
         }
         for (int i=0; i < info[1]; i++) {
-            data.add(new item(""+(i+1),"","",""));
+            data.add(new item(""+(i+1),"","","",current[1]));
         }
         for (int i=0; i<(43-(info[0]+info[1])); i++) {
-            data.add(new item(" ","","",""));
+            data.add(new item(" ","","","",current[1]));
         }
         nowDate.setText(current[0] + "년 " + current[1] + "월");
 
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(adapter);
-
+        System.out.println("--------------------------------------------------------------------month값은 "+current[1]);
 
         Button btn = findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
