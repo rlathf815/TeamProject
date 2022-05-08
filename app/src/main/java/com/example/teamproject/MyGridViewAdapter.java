@@ -2,10 +2,13 @@ package com.example.teamproject;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,6 +18,8 @@ public class MyGridViewAdapter extends BaseAdapter {
     private ArrayList<item> mItems = new ArrayList<item>();
     private Context mContext;
     private int mResource;
+    MainActivity act = new MainActivity();
+
 
     public MyGridViewAdapter(Context context, int resource,ArrayList<item> items)
     {
@@ -22,6 +27,7 @@ public class MyGridViewAdapter extends BaseAdapter {
         mItems = items;
         mResource = resource;
     }
+
 
     @Override
     public int getCount() {
@@ -93,6 +99,15 @@ public class MyGridViewAdapter extends BaseAdapter {
             if(String.valueOf(k).equals(mItems.get(i).day))
                 tv_day.setTextColor(Color.rgb(32,109,171));
         }
+
+        int displayHeight = act.getGridviewHeight();
+        LinearLayout layout = convertView.findViewById(R.id.eachItem);
+        //GridView view = findViewById(R.id.gridview);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)layout.getLayoutParams();
+        params.height = displayHeight/7;
+        layout.setLayoutParams(params);
         return convertView;
     }
+
+
 }

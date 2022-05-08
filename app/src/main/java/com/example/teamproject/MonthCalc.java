@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class MonthViewActivity {
+public class MonthCalc {
 
     public int[] calcCal()
     {
@@ -42,5 +42,5 @@ public class MonthViewActivity {
         info[1] = maxDays;
         return info;
     }
-    MonthViewActivity(){}
+    MonthCalc(){}
 }

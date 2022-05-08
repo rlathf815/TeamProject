@@ -4,28 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Point;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     int[] info = new int[4];
     public static int[] current = new int[3];
 
-    MonthViewActivity mva = new MonthViewActivity();
+    MonthCalc mva = new MonthCalc();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().setWindowAnimations(0); //화면전환효과 삭제
-        setGridviewHeight();
+        //setGridviewHeight();
         Intent myIntent = getIntent();
         int weightVal = myIntent.getIntExtra("month", 0);
 
@@ -134,16 +123,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void setGridviewHeight(){
+    public int getGridviewHeight(){
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getRealSize(size);
         int displayHeight = size.y;
-        LinearLayout layout = findViewById(R.id.eachItem);
-        //GridView view = findViewById(R.id.gridview);
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)layout.getLayoutParams();
-        params.height = displayHeight/7;
-        layout.setLayoutParams(params);
-
+        return displayHeight;
     }
+
 }
